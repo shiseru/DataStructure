@@ -3,6 +3,7 @@
         1. insert(PQ, x, priority): Add x to PQ with given priority
         2. find_max(PQ): Return the item with highest priority
         3. extract_max(PQ): Remove and return the item with highest priority
+    # Assuming that PQ is linked list
 """
 
 
