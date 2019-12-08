@@ -19,9 +19,9 @@ class BinaryHeap:
     def __init__(self, PQ):
         self.PQ = PQ
 
-    # The root of the binary heap always has the highest priority
     # O(1)
     def find_max(self):
+        # The root of the binary heap always has the highest priority
         return self.PQ[1]
 
     # O(log n)
@@ -53,3 +53,22 @@ class BinaryHeap:
 
         return max_node
 
+    # O(log n)
+    def insert(self, x, priority):
+        self.PQ.size += 1
+
+        self.PQ[self.PQ.size] = x
+        self.PQ[self.PQ.size].priority = priority
+
+        i = self.PQ.size
+
+        while i > 1:
+            current_priority = self.PQ[i].priority
+            parent_priority = self.PQ[i // 2].priority
+
+            if current_priority < parent_priority:
+                break
+
+            else:
+                self.PQ[i], self.PQ[i // 2] = self.PQ[i // 2], self.PQ[i]
+                i //= 2
