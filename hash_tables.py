@@ -53,8 +53,34 @@ def insert(hash_table, value, key):
 
 def delete(hash_table, key):
     hash = h(key)
-    linked_list = hash_table[hash]
+    linked_list = hasth_able[hash]
 
     for node in linked_list:
         if node.key == key:
             node.prev.next = node.next
+
+
+"""open addressing"""
+def insert(hash_table, key, value):
+    i = 0
+
+    # find the empty slot in the hash table.
+    while hash_table[h(key, i)] is not None:
+        i += 1
+
+    hash_table[h(key, i)].key = key
+    hash_table[h(key, i)].value = value
+
+
+def search(hash_table, key):
+    i = 0
+
+    # check that key actually exists or not
+    while hash_table[h(key, i)] is not None and hash_table[h(key, i)].key != key:
+        i += i
+
+    if hash_table[h(key, i)].key == key:
+        return hash_table[h(key, i)].value
+
+    else:
+        return None
