@@ -18,13 +18,14 @@
     distance: shortest path between two vertices.
 
     connected graph: path exists in all of pair of vertices. Otherwise, the graph is unconnected
+
+    degree of vertex: number of its neighbours
 """
 
 """
     Assume there are n vertices
     and u has m edges.
-    Then running time is O(n, m)
-"""
+    Then running time is O(n, m) """
 
 
 # O(min(m, n)) where m is a number of vertices and n is number of vertices in Graph.
@@ -38,3 +39,27 @@ def check_adjacent(G, i, j):
 
     return False
 
+
+"""
+    use adjacency matrix. we can represent vertices in [n][n-1] matrix
+    however, it takes O(|V|^2) space cost, for |V| -by-|V| matrix, as the edges and non-edges information have to be 
+    stored in memory.
+"""
+
+
+def check_adjacent(G, i, j):
+    return G.adjacency[i][j]
+
+
+def breadth_first_search(graph, s):
+    queue = []
+
+    queue.append(s)
+    s.enqueued = True
+
+    while len(queue) != 0:
+        vertex = queue.pop(0)
+
+        for each neighbour u of v:
+            if u not in queue:
+                queue.append(u)
